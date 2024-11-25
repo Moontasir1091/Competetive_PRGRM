@@ -33,16 +33,16 @@ int main(){
 // DP Approch
 #include<bits/stdc++.h>
 using namespace std;
-int wt[60], val[1100];
+long long wt[105], val[105];
 
-int dp[1000][1000];
-int Magical(int ind, int wt_left){
+long long dp[105][100005];
+long long Magical(long long ind, long long wt_left){
     if(wt_left == 0) return 0;
 
     if(ind < 0) return 0;
 if(dp[ind][wt_left] != -1) return dp[ind][wt_left];
 
-    int ans = Magical(ind - 1, wt_left);
+    long long ans = Magical(ind - 1, wt_left);
 
     if(wt_left - wt[ind] >= 0)
     ans = max(ans,(Magical(ind - 1, wt_left - wt[ind]) + val[ind]));
