@@ -3,8 +3,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 int wt[60], val[1100];
-
-
 int Magical(int ind, int wt_left){
     if(wt_left == 0) return 0;
 
