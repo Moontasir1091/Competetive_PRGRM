@@ -1,4 +1,7 @@
 // https://www.geeksforgeeks.org/problems/rod-cutting0840/1
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
   public:
 int dp[1005];
@@ -21,5 +24,9 @@ int dp[1005];
         return magic(n, price);
     }
 };
+
+int main(){
+  
+}
 
 
