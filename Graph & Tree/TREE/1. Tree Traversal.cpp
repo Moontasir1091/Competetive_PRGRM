@@ -1,4 +1,19 @@
+/*
+Preprder:
+    1. Root
+    2. Left
+    3. Right
 
+Inorder:
+    1. Left
+    2. Root
+    3. Right
+
+Postorder:
+    1. Left
+    2. Right
+    3. Root
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
