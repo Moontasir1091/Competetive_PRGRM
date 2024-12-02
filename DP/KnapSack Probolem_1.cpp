@@ -15,6 +15,7 @@ int Magical(int ind, int wt_left){
     ans = max(ans,(Magical(ind - 1, wt_left - wt[ind]) + val[ind]));
 
     return ans;
+    //
 
 }
 
