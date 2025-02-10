@@ -1,21 +1,24 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-int main(){
-    int t; cin >> t;
-    while(t--){
-        string game = "abcdefghijklmnopqrstuvwxyz";
-        set<char>st;
-        int n; cin >> n;
-        int l = 0, r = 25;
-        if(n<=26){
-           cout << game[l] << game[l] << game[r] << "\n";
-           st.insert(g)
-        }
-        else{
-            cout << game[25];
-            if((n-25)==0)
-        }
 
-
+void Func(int n) {
+    for (int a = 1; a <= 26; a++) {
+        for (int b = a; b <= 26; b++) {
+            int c = n - (a + b);
+            if (c >= b && c <= 26) {
+                cout << char('a' + a - 1) << char('a' + b - 1) << char('a' + c - 1) << endl;
+                return;
+            }
+        }
     }
+}
+
+int main() {
+    int test, n;
+    cin >> test;
+    while (test--) {
+        cin >> n;
+        Func(n);
+    }
+    return 0;
 }
