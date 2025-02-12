@@ -40,3 +40,15 @@ for(int i=1;i<=n;++i){
 cout << cnt << endl;
     
 }
+
+/*
+https://www.hackerearth.com/problem/algorithm/connected-components-in-a-graph/
+
+input
+8 5
+1 2
+2 3
+2 4
+3 5
+6 7
+*/
