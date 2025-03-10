@@ -126,3 +126,24 @@ int main()
     cout << minIndex << endl;
     return 0;
 }
+
+-------------------------------------------------------------
+// if i divisor of K then k/i will be the divisor of K
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long n, k;
+    cin >> n >> k;
+    long long cnt = 0;
+
+    for (long long i = 1; i <= n; ++i)
+    {
+
+        if (k % i == 0 && k / i <= n) // if i divisor of K then k/i will be the divisor of K
+            cnt++;
+    }
+
+    cout << cnt << endl;
+}
