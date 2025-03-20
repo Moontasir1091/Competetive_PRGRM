@@ -16,10 +16,10 @@ bool dfs(int vertex, int par)
         if (visited[child] && child == par)
             continue;
         if (visited[child])
-            return 1;
+            return true; /// Loop exist kore
 
-        if (visited[child])
-            continue; // ✅ child চেক করা হচ্ছে
+        // if (visited[child])
+        //     continue; // ✅ child চেক করা হচ্ছে
 
         is_loop_Exist |= dfs(child, vertex);
     }
