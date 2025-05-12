@@ -67,33 +67,34 @@ F F F T T T → (Find First True or Last False)
 T T T F F F → (Find First False or Last True)
 
 */
+/*
+#include <iostream>
+using namespace std;
 
-// #include <iostream>
-// using namespace std;
+// Example predicate function
+bool predicate(int x) {
+    return x >= 10;  // Returns true for x >= 10
+}
 
-// // Example predicate function
-// bool predicate(int x) {
-//     return x >= 10;  // Returns true for x >= 10
-// }
+// Function to find the first occurrence of `true`
+int findFirstTrue(int low, int high) {
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (predicate(mid)) {
+            high = mid;  // Move left to find the first true
+        } else {
+            low = mid + 1;  // Move right as mid is false
+        }
+    }
+    return low;
+}
 
-// // Function to find the first occurrence of `true`
-// int findFirstTrue(int low, int high) {
-//     while (low < high) {
-//         int mid = low + (high - low) / 2;
-//         if (predicate(mid)) {
-//             high = mid;  // Move left to find the first true
-//         } else {
-//             low = mid + 1;  // Move right as mid is false
-//         }
-//     }
-//     return low;
-// }
-
-// int main() {
-//     int result = findFirstTrue(0, 20);
-//     cout << "First True is at index: " << result << endl;
-//     return 0;
-// }
+int main() {
+    int result = findFirstTrue(0, 20);
+    cout << "First True is at index: " << result << endl;
+    return 0;
+}
+*/
 
 
 #include<bits/stdc++.h>
