@@ -1,28 +1,46 @@
-#include <bits/stdc++.h>
-#define ll long long int
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int t; cin >> t;
-    while(t--) {
-        ll n, x; 
-        cin >> n >> x;
-        
-        vector<ll> v(n);
-        for(ll i = 0; i < n; ++i) {
-            cin >> v[i];
+
+int n,x;
+vector<int> a;
+
+
+bool good(long long h){
+
+    long long p = 2;
+    long long water = 0;
+    for(int i =0;i<n;++i){
+        if(a[i] < h){
+            water += h - a[i];
         }
-        
-        sort(v.begin(), v.end());
-       
-int hight = v[0];
-for(ll i = 0 ; i<n;++i){
-    while(hight < x){
-        
+
     }
+    return water <= x;
 }
 
+int  main(){
+    int t; cin >> t;
+    while(t--){
+        cin >> n >> x;
+    a.resize(n);
+    a.clear();
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    long long  lo = 0, hi = 2e9;
+    while(hi > lo){
+        long long mid = (lo + hi + 1) / 2; // ceiling mid
+        if(good(mid)){
+            lo = mid;
+        }else{
+            hi = mid - 1;
+        }
+    }
+    cout << lo << endl;
 
     }
+    
     return 0;
+
 }
