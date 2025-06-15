@@ -33,3 +33,6 @@ int magic(int i, int j, string &s1, string &s2){
 int main(){
 
 }
+
+
+
