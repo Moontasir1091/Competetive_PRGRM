@@ -134,20 +134,23 @@ vi prefix_sum(const vi &a) {
 //  Problem Solve Function
 void solve() {
    int n; cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
+    vi a(n);
+    forn(i,n){
         cin >> a[i];
     }
-    int cnt = 0;
-    for(int i = 0; i < n; ++i) {
-        for(int j = i + 1; j < n; ++j) {
-            if(a[j] - a[i] == j - i) {
-                cnt++;
-            }
-        }
-        
+    map<ll, ll> freq;
+    forn(i,n){
+        ll b = a[i] - i;
+        freq[b]++;
     }
-    cout << cnt << endl;
+    ll res = 0;
+    for(auto &it : freq){
+        ll cnt = it.second;
+        if(cnt > 1){
+            res += (cnt * (cnt - 1)) / 2; // nC2 = n * (n-1) / 2
+        }
+    }
+    cout << res << endl;
 }
     
 
