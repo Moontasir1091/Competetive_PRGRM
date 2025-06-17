@@ -129,20 +129,37 @@ vi prefix_sum(const vi &a) {
     return pre;
 }
 
-/*Maximum Subarray sum: KADANE algo
-for (int i = 0; i < n; ++i) {
-    
-    current += a[i];
-    if (current < 0) current = 0;
-    maxSum = max(maxSum, current);
-}
-*/
-
 
 
 //  Problem Solve Function
 void solve() {
-    // Write your problem solution here
+    int n; cin >> n;
+    vi a(n);
+    for(int i = 0; i < n; ++i) 
+        cin >> a[i];
+     int m; cin >> m; vi b(m);
+
+     vector<bool> used(m, false);
+    int cnt = 0;
+    
+    for(int j = 0; j < m; ++j) {
+        cin >> b[j];
+    }
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < m; ++j) {
+            if(!used[j] && (a[i] == b[j] || abs(a[i] - b[j]) == 1)) {
+                used[j] = true;
+                cnt++;
+                break;
+            }
+        }
+    }
+               
+    cout << cnt << endl;
+    
 }
 
 //  Main
