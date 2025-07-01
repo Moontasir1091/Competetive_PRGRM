@@ -1,21 +1,23 @@
-// Author: Md Montashirul Islam
+#// Author: Md Montashirul Islam
 // Dept of CSE
 // International Islamic University Chittagong
 
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 //  Fast I/O
-#define fastio() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL);
 
 //  Typedefs & Macros
 #define ll long long
 #define ull unsigned long long
 #define ld long double
 #define pb push_back
-#define pii pair<int,int>
-#define pll pair<ll,ll>
+#define pii pair<int, int>
+#define pll pair<ll, ll>
 #define vi vector<int>
 #define vll vector<ll>
 #define all(x) (x).begin(), (x).end()
@@ -25,9 +27,9 @@ using namespace std;
 #define endl '\n'
 
 //  Loops
-#define forn(i,n) for(int i=0;i<(n);++i)
-#define rfor(i,n) for(int i=(n)-1;i>=0;--i)
-#define forr(i,a,b) for(int i=(a);i<=(b);++i)
+#define forn(i, n) for (int i = 0; i < (n); ++i)
+#define rfor(i, n) for (int i = (n) - 1; i >= 0; --i)
+#define forr(i, a, b) for (int i = (a); i <= (b); ++i)
 
 //  Constants
 const ll MOD = 1e9 + 7;
@@ -42,42 +44,64 @@ int dy8[] = {1, -1, 0, 0, 1, -1, -1, 1};
 
 //  Debugging Tool (works only locally)
 #ifndef ONLINE_JUDGE
-    #define debug(x) cerr << #x << " = "; _print(x); cerr << endl;
+#define debug(x)         \
+    cerr << #x << " = "; \
+    _print(x);           \
+    cerr << endl;
 #else
-    #define debug(x)
+#define debug(x)
 #endif
 
-void _print(int x){cerr << x;}
-void _print(ll x){cerr << x;}
-void _print(string x){cerr << x;}
-void _print(char x){cerr << x;}
-void _print(bool x){cerr << (x ? "true" : "false");}
-template<class T> void _print(vector<T> v){cerr << "[ "; for(T i : v) {_print(i); cerr << " ";} cerr << "]";}
+void _print(int x) { cerr << x; }
+void _print(ll x) { cerr << x; }
+void _print(string x) { cerr << x; }
+void _print(char x) { cerr << x; }
+void _print(bool x) { cerr << (x ? "true" : "false"); }
+template <class T>
+void _print(vector<T> v)
+{
+    cerr << "[ ";
+    for (T i : v)
+    {
+        _print(i);
+        cerr << " ";
+    }
+    cerr << "]";
+}
 
 //  Basic Math Utils
 ll gcd(ll a, ll b) { return b == 0 ? a : gcd(b, a % b); }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
-ll binpow(ll a, ll b, ll m = MOD) {
+ll binpow(ll a, ll b, ll m = MOD)
+{
     a %= m;
     ll res = 1;
-    while(b){
-        if(b & 1) res = res * a % m;
+    while (b)
+    {
+        if (b & 1)
+            res = res * a % m;
         a = a * a % m;
         b >>= 1;
     }
     return res;
 }
-ll modinv(ll a, ll m = MOD) {
+ll modinv(ll a, ll m = MOD)
+{
     return binpow(a, m - 2, m);
 }
-ll intSqrt(ll x) {
+ll intSqrt(ll x)
+{
     ll low = 1, high = x, ans = 1;
-    while (low <= high) {
+    while (low <= high)
+    {
         ll mid = (low + high) / 2;
-        if (mid * mid <= x) {
+        if (mid * mid <= x)
+        {
             ans = mid;
             low = mid + 1;
-        } else {
+        }
+        else
+        {
             high = mid - 1;
         }
     }
@@ -105,84 +129,87 @@ lower_bound(v.begin(), v.end(), x); // ≥ x
 upper_bound(v.begin(), v.end(), x); // > x
 */
 
-
 // Precomputation: Factorials and Inverse Factorials
 ll fact[MAXN], invFact[MAXN];
-void precompute_factorials() {
+void precompute_factorials()
+{
     fact[0] = invFact[0] = 1;
-    for (int i = 1; i < MAXN; i++) {
-        fact[i] = fact[i-1] * i % MOD;
+    for (int i = 1; i < MAXN; i++)
+    {
+        fact[i] = fact[i - 1] * i % MOD;
         invFact[i] = modinv(fact[i]);
     }
 }
-ll nCr(int n, int r) {
-    if (r > n || r < 0) return 0;
+ll nCr(int n, int r)
+{
+    if (r > n || r < 0)
+        return 0;
     return fact[n] * invFact[r] % MOD * invFact[n - r] % MOD;
 }
 
 // ➕ Prefix Sum
-vi prefix_sum(const vi &a) {
+vi prefix_sum(const vi &a)
+{
     int n = a.size();
     vi pre(n + 1, 0);
     for (int i = 0; i < n; ++i)
-        pre[i+1] = pre[i] + a[i];
+        pre[i + 1] = pre[i] + a[i];
     return pre;
 }
 
 /*Maximum Subarray sum: KADANE algo
 for (int i = 0; i < n; ++i) {
-    
+
     current += a[i];
     if (current < 0) current = 0;
     maxSum = max(maxSum, current);
 }
 */
 
-
-
 //  Problem Solve Function
-void solve() {
-   int n;
-        cin >> n;
+void solve()
+{
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int cntDOT = 0, ans = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        if (s[i] == '.')
+        {
+            cntDOT++;
 
-        int ar[n + 2]; // 1-based indexing
-        for (int i = 1; i <= n; i++) {
-            cin >> ar[i];
-        }
-
-        long long ans = 0;
-
-        for (int i = 2; i <= n; i++) {
-            int z = i + i - 1; // maximum value of i + y
-
-            if (ar[i] > z) continue; // skip if a[i] too large
-
-            int x = (z % ar[i]) + 1;
-            int y = i - x;
-
-            while (y >= 1) {
-                if (ar[i] * ar[y] == i + y) {
-                    ans++;
-                }
-                y -= ar[i];
+            if (cntDOT < 3)
+            {
+                ans++;
+            }
+            else
+            {
+                ans = 2;
+                break;
             }
         }
-
-        cout << ans << endl;
-    
+        else
+        {
+            cntDOT = 0; // Reset on encountering '#'
+        }
+    }
+    cout << ans << endl;
 }
 
-
 //  Main
-int main() {
+int main()
+{
     fastio();
 
     //  Precomputation
     precompute_factorials();
 
     int t = 1;
-     cin >> t;
-    while(t--) {
+    cin >> t;
+    while (t--)
+    {
         solve();
     }
 

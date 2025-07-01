@@ -142,36 +142,21 @@ for (int i = 0; i < n; ++i) {
 
 //  Problem Solve Function
 void solve() {
-   int n;
-        cin >> n;
-
-        int ar[n + 2]; // 1-based indexing
-        for (int i = 1; i <= n; i++) {
-            cin >> ar[i];
-        }
-
-        long long ans = 0;
-
-        for (int i = 2; i <= n; i++) {
-            int z = i + i - 1; // maximum value of i + y
-
-            if (ar[i] > z) continue; // skip if a[i] too large
-
-            int x = (z % ar[i]) + 1;
-            int y = i - x;
-
-            while (y >= 1) {
-                if (ar[i] * ar[y] == i + y) {
-                    ans++;
-                }
-                y -= ar[i];
-            }
-        }
-
-        cout << ans << endl;
     
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    vector<int> copy_a = a;
+    sort(copy_a.begin(), copy_a.end());
+    if(copy_a == a || k > 1){
+        cout << "YES\n";
+    }
+    else{
+        cout << "NO\n";
+    }
 }
-
 
 //  Main
 int main() {
